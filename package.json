@@ -6,8 +6,11 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "lint": "npx eslint .",
-    "lint:fix": "npx eslint . --fix",
+    "lint:es": "npx eslint .",
+    "lint:es-fix": "npx eslint . --fix",
+    "lint:scss": "npx stylelint **/*.scss",
+    "lint:scss-fix": "npx stylelint **/*.scss --fix",
+    "test": "npm run lint:es && npm run lint:scss",
     "dev": "cross-env NODE_ENV=development npx webpack --mode development",
     "build": "cross-env NODE_ENV=production npx webpack --mode production",
     "start": "node server.js",
@@ -15,15 +18,15 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint",
+      "pre-commit": "npm test",
       "commit-msg": "npx commitlint --edit $1"
     }
   },
   "repository": {
-		"type": "git",
-		"url": "git+https://github.com/almax-21/react-redux-boilerplate.git"
-	},
-	"author": "Maksim Almaev",
+    "type": "git",
+    "url": "git+https://github.com/almax-21/react-redux-boilerplate.git"
+  },
+  "author": "Maksim Almaev",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -70,6 +73,8 @@
     "sass-loader": "^12.3.0",
     "size-plugin": "^2.0.0",
     "style-loader": "^3.3.1",
+    "stylelint": "^14.6.1",
+    "stylelint-config-standard-scss": "^3.0.0",
     "terser-webpack-plugin": "^5.2.4",
     "ts-loader": "^9.2.6",
     "typescript": "^4.4.4",
