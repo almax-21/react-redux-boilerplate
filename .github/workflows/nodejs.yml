@@ -26,4 +26,4 @@ jobs:
           npm ci
       - name: Run linter
         run: |
-          npm test
+          npm run lint

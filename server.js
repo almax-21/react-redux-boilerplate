@@ -12,9 +12,9 @@ app.use(compression());
 app.use(express.static(path.resolve(__dirname, 'build')));
 
 app.get('*', (_req, res) => {
-	res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.listen(PORT, () => {
-	console.log(`Server started on port ${PORT}`);
+  console.log(`Server started on port ${PORT}`);
 });
