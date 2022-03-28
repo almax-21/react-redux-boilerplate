@@ -1,54 +1,82 @@
 {
-	"parser": "@typescript-eslint/parser",
-	"parserOptions": {
-		"ecmaVersion": "latest"
-	},
-	"plugins": ["@typescript-eslint", "react-hooks", "simple-import-sort"],
-	"extends": [
-		"plugin:react/recommended",
-		"plugin:@typescript-eslint/recommended"
-	],
-	"rules": {
-		"@typescript-eslint/no-explicit-any": "off",
-		"react-hooks/rules-of-hooks": "error",
-		"react-hooks/exhaustive-deps": "off",
-		"react/prop-types": "off",
-		"react/react-in-jsx-scope": "off",
-		"react/jsx-sort-props": [
-			"warn",
-			{
-				"callbacksLast": true,
-				"shorthandFirst": true,
-				"shorthandLast": false,
-				"ignoreCase": false,
-				"noSortAlphabetically": false,
-				"reservedFirst": true
-			}
-		],
-		"simple-import-sort/imports": [
-			"warn",
-			{
-				"groups": [
-					// Packages. `react` related packages come first.
-					["^react", "^@?\\w"],
-					// Internal packages.
-					["^(@|@company|@ui|components|utils|config|vendored-lib)(/.*|$)"],
-					// Side effect imports.
-					["^\\u0000"],
-					// Parent imports. Put `..` last.
-					["^\\.\\.(?!/?$)", "^\\.\\./?$"],
-					// Other relative imports. Put same-folder imports and `.` last.
-					["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
-					// Style imports.
-					["^.+\\.s?css$"]
-				]
-			}
-		]
-	},
-	"settings": {
-		"react": {
-			"pragma": "React",
-			"version": "detect"
-		}
-	}
+  "env": {
+    "browser": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "plugins": [
+    "babel",
+    "import",
+    "@typescript-eslint",
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "simple-import-sort",
+    "prettier"
+  ],
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "no-param-reassign": "off",
+    "linebreak-style": ["error", "unix"],
+    "@typescript-eslint/no-explicit-any": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "off",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-sort-props": [
+      "warn",
+      {
+        "callbacksLast": true,
+        "shorthandFirst": true,
+        "shorthandLast": false,
+        "ignoreCase": false,
+        "noSortAlphabetically": false,
+        "reservedFirst": true
+      }
+    ],
+    "simple-import-sort/imports": [
+      "warn",
+      {
+        "groups": [
+          // Packages. `react` related packages come first.
+          ["^react", "^@?\\w"],
+          // Internal packages.
+          ["^(@|@company|@ui|components|utils|config|vendored-lib)(/.*|$)"],
+          // Side effect imports.
+          ["^\\u0000"],
+          // Parent imports. Put `..` last.
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+          // Other relative imports. Put same-folder imports and `.` last.
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          // Style imports.
+          ["^.+\\.s?css$"]
+        ]
+      }
+    ],
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      { "components": ["Link"], "specialLink": ["to"] }
+    ],
+    "jsx-a11y/label-has-for": [
+      2,
+      {
+        "required": {
+          "every": ["id"]
+        }
+      }
+    ],
+    "prettier/prettier": ["error"]
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
+  }
 }
